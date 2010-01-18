@@ -1,6 +1,6 @@
 %define modname Dta1xx
 %define version 2.8.0.142
-%define release %mkrel 1
+%define release %mkrel 2
 %define modversion %{version}-%{release}
 
 Name:     dkms-%{modname}
@@ -73,10 +73,6 @@ EOF
 dkms add -m %{modname} -v %{modversion} --rpm_safe_upgrade \
 && dkms build -m %{modname} -v %{modversion} --rpm_safe_upgrade \
 && dkms install -m %{modname} -v %{modversion} --rpm_safe_upgrade --force
-
-cat > /etc/udev/rules.d/10-%{modname}.rules << DEK
-BUS=="usb", SYSFS{manufacturer}=="DEKTEC", NAME="usb/DekTec/\%k", MODE="0666"
-DEK
 
 %preun
 dkms remove -m %{modname} -v %{modversion} --rpm_safe_upgrade --all
