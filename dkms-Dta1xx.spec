@@ -1,6 +1,6 @@
 %define modname Dta1xx
 %define version 2.8.0.142
-%define release %mkrel 2
+%define release %mkrel 3
 %define modversion %{version}-%{release}
 
 Name:     dkms-%{modname}
